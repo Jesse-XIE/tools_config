@@ -30,10 +30,13 @@ sudo apt install -y tmux
 cp ./configs/tmux.conf ~/.tmux.conf
 
 # autojump
-if [ ! -e ~/.autojump ]; then
-    git clone git://github.com/wting/autojump.git ~/.autojump
-    cd ~/.autojump
+where autojump
+if [ $? -ne 0 ]; then
+    mkdir -p /tmp/autojump
+    git clone git://github.com/wting/autojump.git /tmp/autojump
+    cd /tmp/autojump
     ./install.py
+    rm -rf /tmp/autojump
     cd ~
 fi
 
@@ -44,10 +47,12 @@ echo '[ -f ~/.shrc_share ] && source ~/.shrc_share' >> ~/.zshrc
 
 # --- vim
 # neovim
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install -y neovim
-sudo apt-get install -y python-dev python-pip python3-dev python3-pip
+if [ -z $(where nvim) ]; then
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt-get update
+    sudo apt-get install -y neovim
+    sudo apt-get install -y python-dev python-pip python3-dev python3-pip
+fi
 
 # the ultimate vim config
 if [ ! -e ~/.vim_runtime ]; then
@@ -63,5 +68,8 @@ cp configs/init.vim ~/.config/nvim
 cp ./configs/my_configs.vim ~/.vim_runtime/
 
 
-# --- config
+# --- git
 cp ./configs/gitconfig ~/.gitconfig
+
+
+echo "done"
