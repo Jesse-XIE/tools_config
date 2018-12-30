@@ -6,7 +6,9 @@ sudo apt update
 sudo apt-get install -y software-properties-common
 
 # --- ssh
-ssh-keygen -t rsa -b 4096
+if [ ! -e ~/.ssh/id_rsa.pub ]; then
+    ssh-keygen -t rsa -b 4096
+fi
 
 # --- shell tools
 # zsh
