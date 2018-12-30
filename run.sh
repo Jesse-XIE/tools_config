@@ -5,6 +5,9 @@ set -e
 sudo apt update
 sudo apt-get install -y software-properties-common
 
+# --- ssh
+ssh-keygen -t rsa -b 4096
+
 # --- shell tools
 # zsh
 sudo apt install -y zsh
