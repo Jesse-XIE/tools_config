@@ -10,4 +10,9 @@ if [ $? -ne 0 ]; then
     rm $fname
     go version
     go env
+    echo 'export GOROOT=/usr/local/go' >> ~/.zshrc
+    echo 'export PATH=$GOROOT/bin:$PATH' >> ~/.zshrc
+    echo 'done'
+else
+    echo 'go already exists!'
 fi
