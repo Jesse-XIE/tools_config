@@ -15,21 +15,27 @@ fi
 sudo apt install -y zsh
 
 # on my zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ ! -e ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
 # fzf zsh
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+if [ ! -e ~/.fzf/install ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
 
 # tmux
 sudo apt install -y tmux
 cp ./configs/tmux.conf ~/.tmux.conf
 
 # autojump
-git clone git://github.com/wting/autojump.git ~/.autojump
-cd ~/.autojump
-./install.py
-cd ~
+if [ ! -e ~/.autojump ]; then
+    git clone git://github.com/wting/autojump.git ~/.autojump
+    cd ~/.autojump
+    ./install.py
+    cd ~
+fi
 
 # zsh config
 cp ./configs/shrc_share ~/.zshrc_share
@@ -44,8 +50,10 @@ sudo apt-get install -y neovim
 sudo apt-get install -y python-dev python-pip python3-dev python3-pip
 
 # the ultimate vim config
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_vimrc.sh
+if [ ! -e ~/.vim_runtime ]; then
+    git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+    sh ~/.vim_runtime/install_awesome_vimrc.sh
+fi
 
 # let neovim know the above config
 mkdir -p ~/.config/nvim
