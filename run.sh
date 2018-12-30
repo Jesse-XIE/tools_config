@@ -48,3 +48,7 @@ cp configs/init.vim ~/.config/nvim
 
 # vim extra config
 cp ./configs/my_configs.vim ~/.vim_runtime/
+
+
+# --- config
+cp ./configs/gitconfig ~/.gitconfig
