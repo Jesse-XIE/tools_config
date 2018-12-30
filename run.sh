@@ -30,7 +30,7 @@ sudo apt install -y tmux
 cp ./configs/tmux.conf ~/.tmux.conf
 
 # autojump
-where autojump
+which autojump
 if [ $? -ne 0 ]; then
     mkdir -p /tmp/autojump
     git clone git://github.com/wting/autojump.git /tmp/autojump
@@ -47,7 +47,8 @@ echo '[ -f ~/.shrc_share ] && source ~/.shrc_share' >> ~/.zshrc
 
 # --- vim
 # neovim
-if [ -z $(where nvim) ]; then
+which nvim
+if [ $? -ne 0 ]; then
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt-get update
     sudo apt-get install -y neovim
