@@ -11,7 +11,9 @@ if [ $? -ne 0 ]; then
     go version
     go env
     echo 'export GOROOT=/usr/local/go' >> ~/.zshrc
-    echo 'export PATH=$GOROOT/bin:$PATH' >> ~/.zshrc
+    echo 'export GOPATH=$HOME/Projects/go-projects' >> ~/.zshrc
+    echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.zshrc
+    mkdir -p $GOPATH
     echo 'done'
 else
     echo 'go already exists!'

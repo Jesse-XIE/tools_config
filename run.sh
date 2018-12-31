@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # zsh config
-cp ./configs/shrc_share ~/.zshrc_share
+cp ./configs/shrc_share ~/.shrc_share
 echo '[ -f ~/.shrc_share ] && source ~/.shrc_share' >> ~/.zshrc
 
 
